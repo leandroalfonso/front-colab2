@@ -49,6 +49,10 @@
     height: 100vh;
     display: flex;
    
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+   
     
 }
 .row{
@@ -128,6 +132,13 @@
         height: 100%;
         object-fit: cover;
         text-align: center;
+    }
+    .home{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+       
+        
     }
     
     
