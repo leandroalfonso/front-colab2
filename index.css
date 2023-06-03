@@ -89,7 +89,7 @@
 }
 @media(max-width:600px){
     #userCards{
-        width: 100%;
+        width: 100vw;
         height: auto;
         display: flex;
         
@@ -112,7 +112,7 @@
         font-size: 51px;
         font-weight: 800;
         color: #5c5c5c;
-        margin-top: -45px;
+        margin-top: -75px;
     }
     .row .col-md-6 p{
         font-size: 18px;
