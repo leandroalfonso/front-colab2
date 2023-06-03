@@ -78,7 +78,7 @@
       }
 
       // Fetch para obter os detalhes do usuário
-      fetch(`https://colab2-eight.vercel.app/usuarios${userId}`)
+      fetch(`https://colab2-eight.vercel.app/usuarios/${userId}`)
         .then(resp => resp.json())
         .then(data => {
           exibirDetalhesUsuario(data);
