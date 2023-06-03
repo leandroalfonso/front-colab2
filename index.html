@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solidarize-se</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Solidarize-se</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="cadastro.html">Cadastre-se</a>
+              </li>
+             
+             
+            </ul>
+           
+          </div>
+        </div>
+      </nav>
+  
+    <div class="container">
+        <section class="home">
+            <div class="row">
+                <div class="col-md-6"><img title="img-logo" src="img1.jpg"></div>
+                <div class="col-md-6"><h1>Solidarize-se</h1><hr><p>Ajude a ajudar pessoas, faça sua parte</p></div>
+                
+            </div>
+
+        </section>
+       <div class="container-ajudadores"> <h3>Ajudadores</h3></div>
+        <div id="userCards" class="row"></div>
+    </div>
+
+    <script>
+        fetch('https://colab2-eight.vercel.app/usuarios')
+            .then(resp => resp.json())
+            .then(data => {
+                const userCardsContainer = document.getElementById('userCards');
+    
+                data.forEach(user => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+    
+                    const image = document.createElement('img');
+                    image.src = user.foto_usuario;
+                    image.classList.add('card-img-top');
+                    card.appendChild(image);
+    
+                    const cardBody = document.createElement('div');
+                    cardBody.classList.add('card-body', 'd-flex', 'flex-column');
+                    card.appendChild(cardBody);
+    
+                    const title = document.createElement('h5');
+                    title.classList.add('card-title');
+                    title.textContent = user.nome_usuario;
+                    cardBody.appendChild(title);
+    
+                    const subtitle = document.createElement('h6');
+                    subtitle.classList.add('card-subtitle', 'mb-2', 'text-muted');
+                    subtitle.textContent = user.profissao_usuario;
+                    cardBody.appendChild(subtitle);
+    
+                    const skills = document.createElement('p');
+                    skills.classList.add('card-text');
+                    skills.innerHTML = '<h6 style="color:green">Habilidades:</h6> ' + user.habilidades.substr(0, 60)+'...';
+                    cardBody.appendChild(skills);
+    
+                    cardBody.appendChild(document.createElement('hr'));
+    
+                    const info = document.createElement('p');
+                    info.classList.add('card-text');
+                    info.innerHTML = user.ajudador ? '<span style="color:green; font-size:18px; background-color:#dcdcdc;padding:5px;">Sou Ajudador</span>' : '<span style="color: red;padding:5px; background-color:#dcdcdc; font-size:18px">Preciso de Ajuda:</span>';
+                    cardBody.appendChild(info);
+    
+                    const needHelp = document.createElement('p');
+                    needHelp.classList.add('card-text');
+                    needHelp.textContent = user.ajudador ? '' : user.preciso_ser_ajudado.substr(0, 35) + '...';
+                    cardBody.appendChild(needHelp);
+    
+                    const location = document.createElement('p');
+                    location.classList.add('card-text');
+                    location.textContent = 'Localização: ' + user.mora_aonde;
+                    cardBody.appendChild(location);
+    
+                    const detailsButtonWrapper = document.createElement('div');
+                    detailsButtonWrapper.classList.add('mt-auto', 'd-flex', 'justify-content-end');
+                    cardBody.appendChild(detailsButtonWrapper);
+    
+                    const detailsButton = document.createElement('a');
+                    detailsButton.href = 'detalhes.html?id=' + user.id_usuario;
+                    detailsButton.classList.add('btn', 'btn-primary');
+                    detailsButton.textContent = 'Detalhes';
+                    detailsButtonWrapper.appendChild(detailsButton);
+    
+                    userCardsContainer.appendChild(card);
+                });
+            });
+    </script>
+    </body>
+    
+</body>
+
+</html>

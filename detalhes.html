@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Usuário</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="detalhes.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Solidarize-se</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cadastro.html">Cadastre-se</a>
+          </li>
+         
+         
+        </ul>
+       
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+
+    <div id="userDetails"></div>
+
+    <script>
+      // Obtém o ID do usuário da URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const userId = urlParams.get('id');
+
+      // Função para exibir os detalhes do usuário
+      function exibirDetalhesUsuario(usuario) {
+        const userDetailsContainer = document.getElementById('userDetails');
+
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const image = document.createElement('img');
+        image.src = usuario.foto_usuario;
+        image.classList.add('card-img-top');
+        card.appendChild(image);
+
+        const cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+        card.appendChild(cardBody);
+
+        const title = document.createElement('h5');
+        title.classList.add('card-title');
+        title.textContent = usuario.nome_usuario;
+        cardBody.appendChild(title);
+
+        const subtitle = document.createElement('h6');
+        subtitle.classList.add('card-subtitle', 'mb-2', 'text-muted');
+        subtitle.textContent = usuario.profissao_usuario;
+        cardBody.appendChild(subtitle);
+
+        const helpDetail = document.createElement('p');
+        helpDetail.classList.add('card-text');
+        helpDetail.innerHTML = usuario.preciso_ser_ajudado || '<h6><i>Habilidades:</i></h6>' + usuario.habilidades;
+        cardBody.appendChild(helpDetail);
+
+        const button = document.createElement('button');
+        button.classList.add('btn', 'btn-primary');
+        button.textContent = usuario.ajudador ? 'Entrar em Contato' : 'Ajudar';
+        cardBody.appendChild(button);
+
+        userDetailsContainer.appendChild(card);
+      }
+
+      // Fetch para obter os detalhes do usuário
+      fetch(`https://colab2-eight.vercel.app/usuarios${userId}`)
+        .then(resp => resp.json())
+        .then(data => {
+          exibirDetalhesUsuario(data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    </script>
+  </div>
+</body>
+</html>
