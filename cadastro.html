@@ -30,7 +30,7 @@
   </nav>
   <div class="container">
     <h1>Cadastre-se e melhore sua cidade !</h1>
-    <form id="cadastroForm">
+    <form id="cadastroForm" action="https://front-colab2.vercel.app/usuarios" method="POST">
      
       <div class="form-group">
         <label for="nomeUsuario">Seu nome completo</label>
@@ -76,25 +76,12 @@
     document.getElementById('cadastroForm').addEventListener('submit', function(event) {
       event.preventDefault();
   
-      const form = new FormData();
-      const data = {};
-  
-      for (const [key, value] of form.entries()) {
-        data[key] = value;
-      }
-  
-      const fileInput = document.getElementById('fotoUsuario');
-      if (fileInput.files.length > 0) {
-        form.append('foto_usuario', fileInput.files[0]);
-      }
-  
-      for (const [key, value] of Object.entries(data)) {
-        form.append(key, value);
-      }
+      const form = document.getElementById('cadastroForm');
+      const formData = new FormData(form);
   
       fetch('https://colab2-eight.vercel.app/usuarios', {
         method: 'POST',
-        body: form
+        body: formData
       })
       .then(response => response.json())
       .then(result => {
@@ -106,6 +93,8 @@
       });
     });
   </script>
+  
+  
   
   
   
