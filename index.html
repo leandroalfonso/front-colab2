@@ -48,7 +48,7 @@
     </div>
 
     <script>
-        fetch('https://colab2-eight.vercel.app/usuarios')
+        fetch('http://localhost:3000/usuarios')
             .then(resp => resp.json())
             .then(data => {
                 const userCardsContainer = document.getElementById('userCards');
