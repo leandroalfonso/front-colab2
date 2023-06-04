@@ -89,7 +89,7 @@
         data['foto_usuario'] = fileInput.files[0];
       }
   
-      fetch('http://localhost:3000/usuarios', {
+      fetch('https://colab2-eight.vercel.app/usuarios', {
         method: 'POST',
         body: form
       })
