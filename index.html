@@ -78,19 +78,19 @@
     
                     const skills = document.createElement('p');
                     skills.classList.add('card-text');
-                    skills.innerHTML = '<p style="color:green">Habilidades</p> ' + user.habilidades.substr(0, 60)+'...';
+                    skills.innerHTML = '<p style="color:green">Habilidades</p>' + user.habilidades.substr(0, 60)+'...';
                     cardBody.appendChild(skills);
     
                     cardBody.appendChild(document.createElement('hr'));
     
                     const info = document.createElement('p');
                     info.classList.add('card-text');
-                    info.innerHTML = user.ajudador ? '<span style="color:green; font-size:18px; background-color:#dcdcdc;padding:5px;">Sou Ajudador</span>' : '<span style="color: red; background-color:#dcdcdc; font-size:16px">Preciso de Ajuda</span>';
+                    info.innerHTML = user.ajudador ? '<span style="color:green; font-size:16px; background-color:#dcdcdc;padding:5px;">Sou Ajudador</span>' : '<span style="color: red; background-color:#dcdcdc;padding:5px; font-size:16px;">Preciso de Ajuda</span>';
                     cardBody.appendChild(info);
     
                     const needHelp = document.createElement('p');
                     needHelp.classList.add('card-text');
-                    needHelp.innerHTML = user.ajudador ? '' : '<p style="font-size:14px;color:red;">'+user.preciso_ser_ajudado.substr(0, 35) + '...</p>';
+                    needHelp.innerHTML = user.ajudador ? '' : user.preciso_ser_ajudado.substr(0, 35) + '...';
                     cardBody.appendChild(needHelp);
     
                     const location = document.createElement('p');
