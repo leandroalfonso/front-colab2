@@ -7,36 +7,45 @@
     <title>Solidarize-se</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
+    <style>
+      .navbar-green {
+        background-color: rgb(57, 168, 57);
+      }
+      .navbar-green .navbar-nav .nav-link {
+      color: white;
+    }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Solidarize-se</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="cadastro.html">Cadastre-se</a>
-              </li>
-             
-             
-            </ul>
-           
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-green">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Solidarize-se</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cadastro.html">Cadastre-se</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="quemsomos.html">Quem Somos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
   
     <div class="container">
         <section class="home">
             <div class="row">
                 <div class="col-md-6"><img title="img-logo" src="img1.jpg"></div>
-                <div class="col-md-6"><h1>Solidarize-se</h1><hr><p>Ajude a ajudar pessoas, faça sua parte</p><div><button onclick="window.location.href='#ajudadores'" class="btn btn-success rounded-5">Participe</button></div></div>
+                <div class="col-md-6"><h1>Solidarize-se</h1><hr><p>Ajude a ajudar pessoas, faça sua parte, a sociedade agredece !</p><div><button onclick="window.location.href='#ajudadores'" class="btn btn-success rounded-5">Participe</button></div></div>
                 
                 
             </div>
@@ -56,6 +65,9 @@
                 data.forEach(user => {
                     const card = document.createElement('div');
                     card.classList.add('card');
+                    //se for ajudador, a cor do card é verde, se for ajudado, a cor do card é vermelha
+                    card.style.backgroundColor = user.ajudador ? '#c2ffc2' : '#f9d423';
+
     
                     const image = document.createElement('img');
                     image.src = user.foto_usuario;
