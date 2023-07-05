@@ -73,14 +73,18 @@
         cardBody.appendChild(helpDetail);
 
         const button = document.createElement('button');
-        usuario.ajudador ? button.classList.add('btn', 'btn-success') : button.classList.add('btn', 'btn-warning');
+          if (!usuario.ajudador) {
+            button.classList.add('btn', 'btn-warning');
+            button.textContent = 'Ajudar';
+            button.addEventListener('click', () => {
+              const mensagem = encodeURIComponent('Olá, estou entrando em contato para oferecer minha ajuda, vi seu perfil no Solidarize-se, e gostaria de saber como posso ajudar.');
+              window.location.href = `whatsapp://send?phone=5548991341448&text=${mensagem}`;
+            });
+          } else {
+            button.style.display = 'none'; // Oculta o botão para ajudadores
+          }
+          cardBody.appendChild(button);
 
-        button.textContent = usuario.ajudador ? 'Entrar em Contato' : 'Ajudar';
-        button.addEventListener('click', () => {
-          const mensagem = encodeURIComponent('Olá, estou entrando em contato para oferecer minha ajuda, vi seu perfil no Solidarize-se, e gostaria de saber como posso ajudar.');
-          window.location.href = `whatsapp://send?phone=5548991341448&text=${mensagem}`;
-        });
-        cardBody.appendChild(button);
 
         userDetailsContainer.appendChild(card);
       }
