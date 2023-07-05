@@ -73,10 +73,10 @@
         cardBody.appendChild(helpDetail);
 
         const button = document.createElement('button');
-        button.classList.add('btn', 'btn-primary');
+        button.classList.add('btn', 'btn-warning');
         button.textContent = usuario.ajudador ? 'Entrar em Contato' : 'Ajudar';
         button.addEventListener('click', () => {
-          const mensagem = encodeURIComponent('Olá, estou entrando em contato para oferecer minha ajuda, vi seu perfil no Solidarize-se.');
+          const mensagem = encodeURIComponent('Olá, estou entrando em contato para oferecer minha ajuda, vi seu perfil no Solidarize-se, e gostaria de saber como posso ajudar.');
           window.location.href = `whatsapp://send?phone=5548991341448&text=${mensagem}`;
         });
         cardBody.appendChild(button);
